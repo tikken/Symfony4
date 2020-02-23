@@ -49,12 +49,12 @@ class BlogController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="blog_by_id")
+     * @Route("/{id}", name="blog_by_id", requirements={"id"="\d+"})
      */
     public function post($id)
     {
         return new JsonResponse(
-            array_search($id, array_column(self::POSTS, 'id'))
+            self::POSTS[array_search($id, array_column(self::POSTS, 'id'))]
         );
     }
 
@@ -64,7 +64,7 @@ class BlogController extends AbstractController
     public function postBySlug($slug)
     {
         return new JsonResponse(
-            array_search($slug, array_column(self::POSTS, 'slug'))
+            self::POSTS[array_search($slug, array_column(self::POSTS, 'slug'))]
         );
     }
 }
