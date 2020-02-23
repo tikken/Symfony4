@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/printers/tests" isTestSource="true" packagePrefix="App\Tests\" />
+      <sourceFolder url="file://$MODULE_DIR$/printers/src" isTestSource="false" packagePrefix="App\" />
+      <excludeFolder url="file://$MODULE_DIR$/printers/vendor/composer" />
+      <excludeFolder url="file://$MODULE_DIR$/printers/vendor/doctrine/annotations" />
+      <excludeFolder url="file://$MODULE_DIR$/printers/vendor/doctrine/cache" />
+      <excludeFolder url="file://$MODULE_DIR$/printers/vendor/doctrine/collections" />
+      <excludeFolder url="file://$MODULE_DIR$/printers/vendor/doctrine/common" />
+      <excludeFolder url="file://$MODULE_DIR$/printers/vendor/doctrine/dbal" />
+      <excludeFolder url="file://$MODULE_DIR$/printers/vendor/doctrine/doctrine-bundle" />
+      <excludeFolder url="file://$MODULE_DIR$/printers/vendor/doctrine/doctrine-migrations-bundle" />
+      <excludeFolder url="file://$MODULE_DIR$/printers/vendor/doctrine/event-manager" />
+      <excludeFolder url="file://$MODULE_DIR$/printers/vendor/doctrine/inflector" />
+      <excludeFolder url="file://$MODULE_DIR$/printers/vendor/doctrine/instantiator" />
+      <excludeFolder url="file://$MODULE_DIR$/printers/vendor/doctrine/lexer" />
+      <excludeFolder url="file://$MODULE_DIR$/printers/vendor/doctrine/migrations" />
+      <excludeFolder url="file://$MODULE_DIR$/printers/vendor/doctrine/orm" />
+      <excludeFolder url="file://$MODULE_DIR$/printers/vendor/doctrine/persistence" />
+      <excludeFolder url="file://$MODULE_DIR$/printers/vendor/doctrine/reflection" />
+      <excludeFolder url="file://$MODULE_DIR$/printers/vendor/jdorn/sql-formatter" />
+      <excludeFolder url="file://$MODULE_DIR$/printers/vendor/nikic/php-parser" />
+      <excludeFolder url="file://$MODULE_DIR$/printers/vendor/ocramius/package-versions" />
+      <excludeFolder url="file://$MODULE_DIR$/printers/vendor/ocramius/proxy-manager" />
+      <excludeFolder url="file://$MODULE_DIR$/printers/vendor/phpdocumentor/reflection-common" />
+      <excludeFolder url="file://$MODULE_DIR$/printers/vendor/phpdocumentor/reflection-docblock" />
+      <excludeFolder url="file://$MODULE_DIR$/printers/vendor/phpdocumentor/type-resolver" />
+      <excludeFolder url="file://$MODULE_DIR$/printers/vendor/psr/cache" />
+      <excludeFolder url="file://$MODULE_DIR$/printers/vendor/psr/container" />
+      <excludeFolder url="file://$MODULE_DIR$/printers/vendor/psr/log" />
+      <excludeFolder url="file://$MODULE_DIR$/printers/vendor/sensio/framework-extra-bundle" />
+      <excludeFolder url="file://$MODULE_DIR$/printers/vendor/symfony/cache" />
+      <excludeFolder url="file://$MODULE_DIR$/printers/vendor/symfony/cache-contracts" />
+      <excludeFolder url="file://$MODULE_DIR$/printers/vendor/symfony/config" />
+      <excludeFolder url="file://$MODULE_DIR$/printers/vendor/symfony/console" />
+      <excludeFolder url="file://$MODULE_DIR$/printers/vendor/symfony/debug" />
+      <excludeFolder url="file://$MODULE_DIR$/printers/vendor/symfony/dependency-injection" />
+      <excludeFolder url="file://$MODULE_DIR$/printers/vendor/symfony/doctrine-bridge" />
+      <excludeFolder url="file://$MODULE_DIR$/printers/vendor/symfony/dotenv" />
+      <excludeFolder url="file://$MODULE_DIR$/printers/vendor/symfony/error-handler" />
+      <excludeFolder url="file://$MODULE_DIR$/printers/vendor/symfony/event-dispatcher" />
+      <excludeFolder url="file://$MODULE_DIR$/printers/vendor/symfony/event-dispatcher-contracts" />
+      <excludeFolder url="file://$MODULE_DIR$/printers/vendor/symfony/filesystem" />
+      <excludeFolder url="file://$MODULE_DIR$/printers/vendor/symfony/finder" />
+      <excludeFolder url="file://$MODULE_DIR$/printers/vendor/symfony/flex" />
+      <excludeFolder url="file://$MODULE_DIR$/printers/vendor/symfony/framework-bundle" />
+      <excludeFolder url="file://$MODULE_DIR$/printers/vendor/symfony/http-foundation" />
+      <excludeFolder url="file://$MODULE_DIR$/printers/vendor/symfony/http-kernel" />
+      <excludeFolder url="file://$MODULE_DIR$/printers/vendor/symfony/inflector" />
+      <excludeFolder url="file://$MODULE_DIR$/printers/vendor/symfony/maker-bundle" />
+      <excludeFolder url="file://$MODULE_DIR$/printers/vendor/symfony/mime" />
+      <excludeFolder url="file://$MODULE_DIR$/printers/vendor/symfony/orm-pack" />
+      <excludeFolder url="file://$MODULE_DIR$/printers/vendor/symfony/polyfill-intl-idn" />
+      <excludeFolder url="file://$MODULE_DIR$/printers/vendor/symfony/polyfill-mbstring" />
+      <excludeFolder url="file://$MODULE_DIR$/printers/vendor/symfony/polyfill-php72" />
+      <excludeFolder url="file://$MODULE_DIR$/printers/vendor/symfony/polyfill-php73" />
+      <excludeFolder url="file://$MODULE_DIR$/printers/vendor/symfony/property-access" />
+      <excludeFolder url="file://$MODULE_DIR$/printers/vendor/symfony/property-info" />
+      <excludeFolder url="file://$MODULE_DIR$/printers/vendor/symfony/routing" />
+      <excludeFolder url="file://$MODULE_DIR$/printers/vendor/symfony/serializer" />
+      <excludeFolder url="file://$MODULE_DIR$/printers/vendor/symfony/serializer-pack" />
+      <excludeFolder url="file://$MODULE_DIR$/printers/vendor/symfony/service-contracts" />
+      <excludeFolder url="file://$MODULE_DIR$/printers/vendor/symfony/stopwatch" />
+      <excludeFolder url="file://$MODULE_DIR$/printers/vendor/symfony/var-dumper" />
+      <excludeFolder url="file://$MODULE_DIR$/printers/vendor/symfony/var-exporter" />
+      <excludeFolder url="file://$MODULE_DIR$/printers/vendor/symfony/yaml" />
+      <excludeFolder url="file://$MODULE_DIR$/printers/vendor/webmozart/assert" />
+      <excludeFolder url="file://$MODULE_DIR$/printers/vendor/zendframework/zend-code" />
+      <excludeFolder url="file://$MODULE_DIR$/printers/vendor/zendframework/zend-eventmanager" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>
