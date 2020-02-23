@@ -29,10 +29,15 @@ class Comment
     private $published;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="comments")
-     * @ORm\JoinColumn(nullable=false)
+     * @ORM\ManyToOne(targetEntity="App\Entity\User",inversedBy="comments")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $author;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $likes;
 
     public function getId(): ?int
     {
@@ -63,6 +68,18 @@ class Comment
         return $this;
     }
 
+    public function getLikes(): ?int
+    {
+        return $this->likes;
+    }
+
+    public function setLikes(int $likes): self
+    {
+        $this->likes = $likes;
+
+        return $this;
+    }
+
     /**
      * @return User
      */
@@ -72,7 +89,7 @@ class Comment
     }
 
     /**
-     * @return User $author
+     * @param User $author
      */
     public function setAuthor(User $author): self
     {
