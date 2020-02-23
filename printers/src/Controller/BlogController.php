@@ -19,61 +19,41 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class BlogController extends AbstractController
 {
-    private const POSTS = [
-        [
-            'id' => 1,
-            'slug'=> 'first',
-            'title' => 'first title'
-        ],
-        [
-            'id' => 2,
-            'slug'=> 'second',
-            'title' => 'second title'
-        ],
-        [
-            'id' => 3,
-            'slug'=> 'third',
-            'title' => 'third title'
-        ],
-        [
-            'id' => 4,
-            'slug'=> 'fourth',
-            'title' => 'fourth title'
-        ],
-    ];
     /**
-     * @Route("/", name="blog_list", requirements={"page"="\d+"})
+     * @Route("/{page}", name="blog_list", defaults={"page":1}, requirements={"page"="\d+"})
      */
     public function list($page = 1, Request $request)
     {
         $limit = $request->get('limit', 10);
+        $repository = $this->getDoctrine()->getRepository(BlogPost::class);
+        $items = $repository->findAll();
 
         return $this->json([
             'page' => $page,
             'limit' => $limit,
-            'data' => array_map(function($item) {
-                return $this->generateUrl('blog_by_id', ['id' => $item['id']]);
-            },self::POSTS)
+            'data' => array_map(function(BlogPost $item) {
+                return $this->generateUrl('blog_by_slug', ['slug' => $item->getSlug()]);
+            }, $items)
         ]);
     }
 
     /**
-     * @Route("/{id}", name="blog_by_id", requirements={"id"="\d+"})
+     * @Route("/post/{id}", name="blog_by_id", requirements={"id"="\d+"})
      */
     public function post($id)
     {
-        return new JsonResponse(
-            self::POSTS[array_search($id, array_column(self::POSTS, 'id'))]
+        return $this->json(
+            $this->getDoctrine()->getRepository(BlogPost::class)->find($id)
         );
     }
 
     /**
-     * @Route("/{slug}", name="blog_by_slug", requirements={"slug"="\d+"})
+     * @Route("/post/{slug}", name="blog_by_slug")
      */
     public function postBySlug($slug)
     {
-        return new JsonResponse(
-            self::POSTS[array_search($slug, array_column(self::POSTS, 'slug'))]
+        return $this->json(
+            $this->getDoctrine()->getRepository(BlogPost::class)->findOneBy(['slug' => $slug])
         );
     }
 
