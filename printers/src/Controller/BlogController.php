@@ -10,7 +10,9 @@ namespace App\Controller;
 
 use App\Entity\BlogPost;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 /**
  * Class BlogController
@@ -37,7 +39,7 @@ class BlogController extends AbstractController
     }
 
     /**
-     * @Route("/post/{id}", name="blog_by_id", requirements={"id"="\d+"})
+     * @Route("/post/{id}", name="blog_by_id", requirements={"id"="\d+"}, methods={"GET"})
      * avoid straight usage of repository object
      */
     public function post(BlogPost $post)
@@ -46,7 +48,7 @@ class BlogController extends AbstractController
     }
 
     /**
-     * @Route("/post/{slug}", name="blog_by_slug")
+     * @Route("/post/{slug}", name="blog_by_slug", methods={"GET"})
      */
     public function postBySlug($slug)
     {
@@ -69,5 +71,17 @@ class BlogController extends AbstractController
         $em->flush();
 
         return $this->json($blogPost);
+    }
+
+    /**
+     * @Route("/post/delete/{id}", name="blog_delete", methods={"DELETE"})
+     */
+    public function delete(BlogPost $post)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($post);
+        $em->flush();
+
+        return new JsonResponse(null, Response::HTTP_NO_CONTENT);
     }
 }
