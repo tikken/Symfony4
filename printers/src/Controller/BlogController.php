@@ -10,7 +10,6 @@ namespace App\Controller;
 
 use App\Entity\BlogPost;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 /**
@@ -39,12 +38,11 @@ class BlogController extends AbstractController
 
     /**
      * @Route("/post/{id}", name="blog_by_id", requirements={"id"="\d+"})
+     * avoid straight usage of repository object
      */
-    public function post($id)
+    public function post(BlogPost $post)
     {
-        return $this->json(
-            $this->getDoctrine()->getRepository(BlogPost::class)->find($id)
-        );
+        return $this->json($post);
     }
 
     /**
