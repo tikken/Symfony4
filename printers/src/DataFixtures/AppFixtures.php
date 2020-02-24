@@ -7,11 +7,19 @@ use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 use App\Entity\BlogPost;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Faker\Factory;
 
 class AppFixtures extends Fixture
 {
+    private $passwordEncoder;
+    /**
+     * @var \Faker\Factory
+     */
+    private $faker;
+
     public function __construct(UserPasswordEncoderInterface $passwordEncoder)
     {
+        $this->faker = Factory::create();
         $this->passwordEncoder = $passwordEncoder;
     }
 
@@ -25,25 +33,19 @@ class AppFixtures extends Fixture
     {
         $user = $this->getReference('tikken');
 
-        $blogPost = new BlogPost();
 
-        $blogPost->setTitle('A first post!');
-        $blogPost->setPublished(new \DateTime('2018-07-01 12:00:00'));
-        $blogPost->setContent('Post text!');
-        $blogPost->setAuthor($user);
-        $blogPost->setSlug('a-first-post');
+        for($i = 0; $i < 100; $i++) {
+            $blogPost = new BlogPost();
 
-        $manager->persist($blogPost);
+            $blogPost->setTitle($this->faker->realText(30));
+            $blogPost->setPublished($this->faker->dateTime);
+            $blogPost->setContent($this->faker->realText());
+            $blogPost->setAuthor($user);
+            $blogPost->setSlug('a-first-post');
 
-        $blogPost = new BlogPost();
+            $manager->persist($blogPost);
+        }
 
-        $blogPost->setTitle('A second post!');
-        $blogPost->setPublished(new \DateTime('2018-07-01 12:00:00'));
-        $blogPost->setContent('Second post text!');
-        $blogPost->setAuthor($user);
-        $blogPost->setSlug('a-second-post');
-
-        $manager->persist($blogPost);
         $manager->flush();
     }
 
