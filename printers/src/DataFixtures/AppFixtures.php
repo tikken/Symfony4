@@ -43,7 +43,9 @@ class AppFixtures extends Fixture
             $blogPost->setPublished($this->faker->dateTime);
             $blogPost->setContent($this->faker->realText());
             $blogPost->setAuthor($user);
-            $blogPost->setSlug('a-first-post');
+            $blogPost->setSlug($this->faker->slug);
+
+            $this->setReference("blog_post_$i",$blogPost);
 
             $manager->persist($blogPost);
         }
@@ -61,6 +63,7 @@ class AppFixtures extends Fixture
                 $comment->setPublished($this->faker->dateTimeThisYear);
                 $comment->setAuthor($this->getReference('tikken'));
                 $comment->setLikes($this->faker->numberBetween(1, 20));
+                $comment->setBlogPost($this->getReference("blog_post_$i"));
 
                 $manager->persist($comment);
             }
