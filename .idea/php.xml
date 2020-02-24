@@ -67,6 +67,34 @@
       <path value="$PROJECT_DIR$/printers/vendor/symfony/serializer-pack" />
       <path value="$PROJECT_DIR$/printers/vendor/symfony/property-access" />
       <path value="$PROJECT_DIR$/printers/vendor/symfony/property-info" />
+      <path value="$PROJECT_DIR$/printers/vendor/symfony/options-resolver" />
+      <path value="$PROJECT_DIR$/printers/vendor/symfony/twig-bundle" />
+      <path value="$PROJECT_DIR$/printers/vendor/symfony/validator" />
+      <path value="$PROJECT_DIR$/printers/vendor/symfony/polyfill-intl-icu" />
+      <path value="$PROJECT_DIR$/printers/vendor/symfony/security-guard" />
+      <path value="$PROJECT_DIR$/printers/vendor/symfony/security-bundle" />
+      <path value="$PROJECT_DIR$/printers/vendor/twig/twig" />
+      <path value="$PROJECT_DIR$/printers/vendor/willdurand/negotiation" />
+      <path value="$PROJECT_DIR$/printers/vendor/symfony/web-link" />
+      <path value="$PROJECT_DIR$/printers/vendor/psr/link" />
+      <path value="$PROJECT_DIR$/printers/vendor/fig/link-util" />
+      <path value="$PROJECT_DIR$/printers/vendor/doctrine/data-fixtures" />
+      <path value="$PROJECT_DIR$/printers/vendor/doctrine/doctrine-fixtures-bundle" />
+      <path value="$PROJECT_DIR$/printers/vendor/api-platform/api-pack" />
+      <path value="$PROJECT_DIR$/printers/vendor/api-platform/core" />
+      <path value="$PROJECT_DIR$/printers/vendor/nelmio/cors-bundle" />
+      <path value="$PROJECT_DIR$/printers/vendor/symfony/asset" />
+      <path value="$PROJECT_DIR$/printers/vendor/pagerfanta/pagerfanta" />
+      <path value="$PROJECT_DIR$/printers/vendor/symfony/translation-contracts" />
+      <path value="$PROJECT_DIR$/printers/vendor/symfony/form" />
+      <path value="$PROJECT_DIR$/printers/vendor/symfony/translation" />
+      <path value="$PROJECT_DIR$/printers/vendor/symfony/intl" />
+      <path value="$PROJECT_DIR$/printers/vendor/symfony/twig-bridge" />
+      <path value="$PROJECT_DIR$/printers/vendor/symfony/security-core" />
+      <path value="$PROJECT_DIR$/printers/vendor/easycorp/easyadmin-bundle" />
+      <path value="$PROJECT_DIR$/printers/vendor/symfony/security-http" />
+      <path value="$PROJECT_DIR$/printers/vendor/symfony/security-csrf" />
+      <path value="$PROJECT_DIR$/printers/vendor/symfony/expression-language" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.1" />

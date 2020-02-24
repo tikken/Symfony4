@@ -2,6 +2,7 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 use App\Entity\BlogPost;
@@ -10,25 +11,53 @@ class AppFixtures extends Fixture
 {
     public function load(ObjectManager $manager)
     {
-       $blogPost = new BlogPost();
+        $this->loadUsers($manager);
+        $this->loadBlogPosts($manager);
+    }
 
-       $blogPost->setTitle('A first post!');
-       $blogPost->setPublished(new \DateTime('2018-07-01 12:00:00'));
-       $blogPost->setContent('Post text!');
-       $blogPost->setAuthor('any');
-       $blogPost->setSlug('a-first-post');
+    public function loadBlogPosts(ObjectManager $manager)
+    {
+        $user = $this->getReference('tikken');
 
-       $manager->persist($blogPost);
+        $blogPost = new BlogPost();
 
-       $blogPost = new BlogPost();
+        $blogPost->setTitle('A first post!');
+        $blogPost->setPublished(new \DateTime('2018-07-01 12:00:00'));
+        $blogPost->setContent('Post text!');
+        $blogPost->setAuthor($user);
+        $blogPost->setSlug('a-first-post');
 
-       $blogPost->setTitle('A second post!');
-       $blogPost->setPublished(new \DateTime('2018-07-01 12:00:00'));
-       $blogPost->setContent('Second post text!');
-       $blogPost->setAuthor('any');
-       $blogPost->setSlug('a-second-post');
+        $manager->persist($blogPost);
 
-       $manager->persist($blogPost);
-       $manager->flush();
+        $blogPost = new BlogPost();
+
+        $blogPost->setTitle('A second post!');
+        $blogPost->setPublished(new \DateTime('2018-07-01 12:00:00'));
+        $blogPost->setContent('Second post text!');
+        $blogPost->setAuthor($user);
+        $blogPost->setSlug('a-second-post');
+
+        $manager->persist($blogPost);
+        $manager->flush();
+    }
+
+    public function loadComments(ObjectManager $manager)
+    {
+
+    }
+
+    public function loadUsers(ObjectManager $manager)
+    {
+        $user = new User();
+        $user->setUsername('tikken');
+        $user->setEmail('admin@mail');
+        $user->setName('tikken');
+        $user->setPassword('12345');
+
+        $this->addReference('tikken', $user);
+
+        $manager->persist($user);
+        $manager->flush();
+
     }
 }
