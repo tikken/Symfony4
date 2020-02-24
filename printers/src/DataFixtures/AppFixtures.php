@@ -2,6 +2,7 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\Comment;
 use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
@@ -27,6 +28,7 @@ class AppFixtures extends Fixture
     {
         $this->loadUsers($manager);
         $this->loadBlogPosts($manager);
+        $this->loadComments($manager);
     }
 
     public function loadBlogPosts(ObjectManager $manager)
@@ -51,7 +53,20 @@ class AppFixtures extends Fixture
 
     public function loadComments(ObjectManager $manager)
     {
+        for($i = 0; $i < 100; $i++) {
+            for($j = 0; $j < rand(1,10); $j++) {
+                $comment = new Comment();
 
+                $comment->setContent($this->faker->realText());
+                $comment->setPublished($this->faker->dateTimeThisYear);
+                $comment->setAuthor($this->getReference('tikken'));
+                $comment->setLikes($this->faker->numberBetween(1, 20));
+
+                $manager->persist($comment);
+            }
+        }
+
+        $manager->flush();
     }
 
     public function loadUsers(ObjectManager $manager)
