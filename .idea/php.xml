@@ -95,6 +95,7 @@
       <path value="$PROJECT_DIR$/printers/vendor/symfony/security-http" />
       <path value="$PROJECT_DIR$/printers/vendor/symfony/security-csrf" />
       <path value="$PROJECT_DIR$/printers/vendor/symfony/expression-language" />
+      <path value="$PROJECT_DIR$/printers/vendor/fzaninotto/faker" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.1" />

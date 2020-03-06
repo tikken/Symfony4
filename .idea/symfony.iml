@@ -27,6 +27,7 @@
       <excludeFolder url="file://$MODULE_DIR$/printers/vendor/doctrine/reflection" />
       <excludeFolder url="file://$MODULE_DIR$/printers/vendor/easycorp/easyadmin-bundle" />
       <excludeFolder url="file://$MODULE_DIR$/printers/vendor/fig/link-util" />
+      <excludeFolder url="file://$MODULE_DIR$/printers/vendor/fzaninotto/faker" />
       <excludeFolder url="file://$MODULE_DIR$/printers/vendor/jdorn/sql-formatter" />
       <excludeFolder url="file://$MODULE_DIR$/printers/vendor/nelmio/cors-bundle" />
       <excludeFolder url="file://$MODULE_DIR$/printers/vendor/nikic/php-parser" />
