@@ -18,6 +18,33 @@ class AppFixtures extends Fixture
      */
     private $faker;
 
+    private const USERS = [
+        [
+            'username' => 'admin',
+            'email' => 'adminblog1',
+            'name' => 'admin',
+            'password' => 'secret123'
+        ],
+        [
+            'username' => 'admin2',
+            'email' => 'adminblog2',
+            'name' => 'admin2',
+            'password' => 'secret123'
+        ],
+        [
+            'username' => 'admin3',
+            'email' => 'adminblog3',
+            'name' => 'admin3',
+            'password' => 'secret123'
+        ],
+        [
+            'username' => 'admin4',
+            'email' => 'adminblog4',
+            'name' => 'admin4',
+            'password' => 'secret123'
+        ]
+    ];
+
     public function __construct(UserPasswordEncoderInterface $passwordEncoder)
     {
         $this->faker = Factory::create();
@@ -74,15 +101,19 @@ class AppFixtures extends Fixture
 
     public function loadUsers(ObjectManager $manager)
     {
-        $user = new User();
-        $user->setUsername('tikken');
-        $user->setEmail('admin@mail');
-        $user->setName('tikken');
-        $user->setPassword($this->passwordEncoder->encodePassword($user, '12345'));
+        foreach (self::USERS as $user) {
+            $user = new User();
 
-        $this->addReference('tikken', $user);
+            $user->setUsername($user['username']);
+            $user->setEmail($user['email']);
+            $user->setName($user['name']);
+            $user->setPassword($this->passwordEncoder->encodePassword($user, $user['password']));
 
-        $manager->persist($user);
+            $this->addReference('tikken', $user);
+
+            $manager->persist($user);
+        }
+
         $manager->flush();
 
     }
