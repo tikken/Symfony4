@@ -52,7 +52,7 @@ class Comment implements AuthoredEntityInterface, PublishedDateEntityInterface
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="comments")
      * @ORM\JoinColumn(nullable=false)
-     * @Groups({"get-comment-with-author"})
+     * @Groups({"post"})
      */
     private $author;
 

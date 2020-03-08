@@ -15,16 +15,20 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ApiResource(
  * itemOperations={"get"={
  *      "access_control"="is_granted()"
- * }},
- * normalizationContext={
- *  "groups"={"read"}
- * })
+ * }})
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  * @UniqueEntity(fields={"username"})
  * @UniqueEntity(fields={"email"})
  */
 class User implements UserInterface
 {
+    const ROLE_COMMENTATOR = "ROLE_COMMENTATOR";
+    const ROLE_WRITER = "ROLE_WRITER";
+    const ROLE_EDITOR = "ROLE_EDITOR";
+    const ROLE_ADMIN = "ROLE_ADMIN";
+    const ROLE_SUPERADMIN = "ROLE_SUPERADMIN";
+
+    const DEFAULT_ROLES = [self::ROLE_COMMENTATOR];
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -35,7 +39,7 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"read","get-comment-with-author"})
+     * @Groups({"get-comment-with-author"})
      * @Assert\NotBlank()
      */
     private $username;
@@ -73,10 +77,16 @@ class User implements UserInterface
      */
     private $comments;
 
+    /**
+     * @ORM\Column(type="simple_array", length=200)
+     */
+    private $roles;
+
     public function __construct()
     {
         $this->posts = new ArrayCollection();
         $this->comments = new ArrayCollection();
+        $this->roles = self::DEFAULT_ROLES;
     }
 
     public function getId(): ?int
@@ -149,9 +159,14 @@ class User implements UserInterface
     }
 
 
-    public function getRoles()
+    public function getRoles(): array
     {
-       return ['ROLE_USER'];
+       return $this->roles;
+    }
+
+    public function setRoles(array $roles)
+    {
+        $this->roles = $roles;
     }
 
     public function getSalt()
