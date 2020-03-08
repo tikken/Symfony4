@@ -60,16 +60,18 @@ class AppFixtures extends Fixture
 
     public function loadBlogPosts(ObjectManager $manager)
     {
-        $user = $this->getReference('tikken');
-
-
         for($i = 0; $i < 100; $i++) {
             $blogPost = new BlogPost();
 
             $blogPost->setTitle($this->faker->realText(30));
             $blogPost->setPublished($this->faker->dateTime);
             $blogPost->setContent($this->faker->realText());
-            $blogPost->setAuthor($user);
+
+
+            $authorReference = $this->getRandomUserReference();
+
+
+            $blogPost->setAuthor($authorReference);
             $blogPost->setSlug($this->faker->slug);
 
             $this->setReference("blog_post_$i",$blogPost);
@@ -88,7 +90,12 @@ class AppFixtures extends Fixture
 
                 $comment->setContent($this->faker->realText());
                 $comment->setPublished($this->faker->dateTimeThisYear);
-                $comment->setAuthor($this->getReference('tikken'));
+
+
+                $authorReference = $this->getRandomUserReference();
+
+
+                $comment->setAuthor($this->getReference($authorReference));
                 $comment->setLikes($this->faker->numberBetween(1, 20));
                 $comment->setBlogPost($this->getReference("blog_post_$i"));
 
@@ -101,20 +108,25 @@ class AppFixtures extends Fixture
 
     public function loadUsers(ObjectManager $manager)
     {
-        foreach (self::USERS as $user) {
+        foreach (self::USERS as $userFix) {
             $user = new User();
 
-            $user->setUsername($user['username']);
-            $user->setEmail($user['email']);
-            $user->setName($user['name']);
-            $user->setPassword($this->passwordEncoder->encodePassword($user, $user['password']));
+            $user->setUsername($userFix['username']);
+            $user->setEmail($userFix['email']);
+            $user->setName($userFix['name']);
+            $user->setPassword($this->passwordEncoder->encodePassword($user, $userFix['password']));
 
-            $this->addReference('tikken', $user);
+            $this->addReference('user' . $userFix['username'] . $user);
 
             $manager->persist($user);
         }
 
         $manager->flush();
 
+    }
+
+    protected function getRandomUserReference(): User
+    {
+        return $this->getReference('user' . self::USERS[rand(0,4)]['username']);
     }
 }
