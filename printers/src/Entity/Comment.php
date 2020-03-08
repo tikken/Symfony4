@@ -4,13 +4,18 @@ namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\EventSubscriber\AuthoredEntityInterface;
+use App\EventSubscriber\PublishedDateEntityInterface;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ApiResource(
  *     itemOperations={"get"},
- *     collectionOperations={"get"}
+ *     collectionOperations={"get"},
+ *     denormalizationContext={
+ *      "groups"={"post"}
+ *  }
  * )
  * @ORM\Entity(repositoryClass="App\Repository\CommentRepository")
  */
@@ -25,6 +30,7 @@ class Comment implements AuthoredEntityInterface, PublishedDateEntityInterface
 
     /**
      * @ORM\Column(type="text")
+     * @Groups({"post"})
      */
     private $content;
 
@@ -42,11 +48,13 @@ class Comment implements AuthoredEntityInterface, PublishedDateEntityInterface
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\BlogPost", inversedBy="comments")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups({"post"})
      */
     private $blogPost;
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups({"post"})
      */
     private $likes;
 
