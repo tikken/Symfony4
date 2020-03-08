@@ -26,6 +26,8 @@ class PublishedDateEntitySubscriber implements EventSubscriberInterface
     {
         $entity = $event->getControllerResult();
 
-        $entity->setPublished(new \DateTime());
+        if($entity instanceof PublishedDateEntityInterface) {
+            $entity->setPublished(new \DateTime());
+        }
     }
 }

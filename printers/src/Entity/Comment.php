@@ -12,7 +12,15 @@ use Symfony\Component\Serializer\Annotation\Groups;
 /**
  * @ApiResource(
  *     itemOperations={"get"},
- *     collectionOperations={"get"},
+ *     collectionOperations={
+ *     "get",
+ *     "post",
+ *     "api_blog_posts_comments_get_subresource"={
+ *        "normalizationContext"={
+ *            "groups"={"get"}
+ *         }
+ *       }
+ *     },
  *     denormalizationContext={
  *      "groups"={"post"}
  *  }
