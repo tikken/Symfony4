@@ -17,7 +17,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *     "post",
  *     "api_blog_posts_comments_get_subresource"={
  *        "normalizationContext"={
- *            "groups"={"get"}
+ *            "groups"={"get-comment-with-author"}
  *         }
  *       }
  *     },
@@ -33,23 +33,26 @@ class Comment implements AuthoredEntityInterface, PublishedDateEntityInterface
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups({"get-comment-with-author"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="text")
-     * @Groups({"post"})
+     * @Groups({"post", "get-comment-with-author"})
      */
     private $content;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Groups({"get-comment-with-author"})
      */
     private $published;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="comments")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups({"get-comment-with-author"})
      */
     private $author;
 
