@@ -7,7 +7,7 @@
  */
 namespace App\EventSubscriber;
 
-use http\Env\Request;
+use App\Security\TokenGenerator;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpKernel\KernelEvents;
 use ApiPlatform\Core\EventListener\EventPriorities;
@@ -15,21 +15,25 @@ use Symfony\Component\HttpKernel\Event\ViewEvent;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use App\Entity\User;
 
-class PasswordHashSubscriber implements EventSubscriberInterface
+class UserRegisterSubscriber implements EventSubscriberInterface
 {
-    public function __construct(UserPasswordEncoderInterface $passwordEncoder)
+    public function __construct(
+        UserPasswordEncoderInterface $passwordEncoder,
+        TokenGenerator $tokenGenerator
+    )
     {
         $this->passwordEncoder = $passwordEncoder;
+        $this->tokenGenerator = $tokenGenerator;
     }
 
     public static function getSubscribedEvents()
     {
         return [
-          KernelEvents::VIEW => ['hashPassword', EventPriorities::PRE_WRITE]
+          KernelEvents::VIEW => ['userRegistered', EventPriorities::PRE_WRITE]
         ];
     }
 
-    public function hashPassword(ViewEvent $event)
+    public function userRegistered(ViewEvent $event)
     {
         $user = $event->getControllerResult();
 
@@ -41,6 +45,9 @@ class PasswordHashSubscriber implements EventSubscriberInterface
             );
         }
 
+        $user->setConfirmationToken(
+            $this->tokenGenerator->getRandomSecureToken()
+        );
 
     }
 }
