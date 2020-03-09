@@ -9,7 +9,6 @@
 namespace App\EventSubscriber;
 
 
-use ApiPlatform\Core\Bridge\Symfony\Bundle\Test\Response;
 use ApiPlatform\Core\EventListener\EventPriorities;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -18,6 +17,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpKernel\Event\ViewEvent;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\HttpKernel\KernelEvents;
+use Symfony\Component\HttpFoundation\Response;
 
 class UserConfirmationSubscriber implements EventSubscriberInterface
 {
@@ -42,14 +42,14 @@ class UserConfirmationSubscriber implements EventSubscriberInterface
     {
         $request = $event->getRequest();
 
-        if('' !== $request->get('_route')) {
+        if('api_user_confirmations_post_collection' !== $request->get('_route')) {
             return;
         }
 
         $confirmationToken = $event->getControllerResult();
 
         $user = $this->userRepository->findOneBy(
-            ['confirmationToken' => $confirmationToken->$confirmationToken]
+            ['confirmationToken' => $confirmationToken->confirmationToken]
         );
 
         if(!$user) {
