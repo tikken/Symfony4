@@ -13,17 +13,21 @@ use Symfony\Component\HttpKernel\KernelEvents;
 use ApiPlatform\Core\EventListener\EventPriorities;
 use Symfony\Component\HttpKernel\Event\ViewEvent;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Swift_Message;
+use Swift_Mailer;
 use App\Entity\User;
 
 class UserRegisterSubscriber implements EventSubscriberInterface
 {
     public function __construct(
         UserPasswordEncoderInterface $passwordEncoder,
-        TokenGenerator $tokenGenerator
+        TokenGenerator $tokenGenerator,
+        Swift_Mailer $mailer
     )
     {
         $this->passwordEncoder = $passwordEncoder;
         $this->tokenGenerator = $tokenGenerator;
+        $this->mailer = $mailer;
     }
 
     public static function getSubscribedEvents()
@@ -49,5 +53,12 @@ class UserRegisterSubscriber implements EventSubscriberInterface
             $this->tokenGenerator->getRandomSecureToken()
         );
 
+
+        $message = (new Swift_Message('Hello from api platform'))
+            ->setFrom('tikken23@gmail.com')
+            ->setTo('Tikken23@yandex.ru')
+            ->setBody('Hello bitch');
+
+        $this->mailer->send($message);
     }
 }

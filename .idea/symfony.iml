@@ -7,6 +7,7 @@
       <sourceFolder url="file://$MODULE_DIR$/printers/src" isTestSource="false" packagePrefix="App\" />
       <excludeFolder url="file://$MODULE_DIR$/printers/vendor/api-platform/api-pack" />
       <excludeFolder url="file://$MODULE_DIR$/printers/vendor/api-platform/core" />
+      <excludeFolder url="file://$MODULE_DIR$/printers/vendor/behat/transliterator" />
       <excludeFolder url="file://$MODULE_DIR$/printers/vendor/composer" />
       <excludeFolder url="file://$MODULE_DIR$/printers/vendor/doctrine/annotations" />
       <excludeFolder url="file://$MODULE_DIR$/printers/vendor/doctrine/cache" />
@@ -26,9 +27,11 @@
       <excludeFolder url="file://$MODULE_DIR$/printers/vendor/doctrine/persistence" />
       <excludeFolder url="file://$MODULE_DIR$/printers/vendor/doctrine/reflection" />
       <excludeFolder url="file://$MODULE_DIR$/printers/vendor/easycorp/easyadmin-bundle" />
+      <excludeFolder url="file://$MODULE_DIR$/printers/vendor/egulias/email-validator" />
       <excludeFolder url="file://$MODULE_DIR$/printers/vendor/fig/link-util" />
       <excludeFolder url="file://$MODULE_DIR$/printers/vendor/fzaninotto/faker" />
       <excludeFolder url="file://$MODULE_DIR$/printers/vendor/jdorn/sql-formatter" />
+      <excludeFolder url="file://$MODULE_DIR$/printers/vendor/jms/metadata" />
       <excludeFolder url="file://$MODULE_DIR$/printers/vendor/lcobucci/jwt" />
       <excludeFolder url="file://$MODULE_DIR$/printers/vendor/lexik/jwt-authentication-bundle" />
       <excludeFolder url="file://$MODULE_DIR$/printers/vendor/namshi/jose" />
@@ -45,6 +48,7 @@
       <excludeFolder url="file://$MODULE_DIR$/printers/vendor/psr/link" />
       <excludeFolder url="file://$MODULE_DIR$/printers/vendor/psr/log" />
       <excludeFolder url="file://$MODULE_DIR$/printers/vendor/sensio/framework-extra-bundle" />
+      <excludeFolder url="file://$MODULE_DIR$/printers/vendor/swiftmailer/swiftmailer" />
       <excludeFolder url="file://$MODULE_DIR$/printers/vendor/symfony/asset" />
       <excludeFolder url="file://$MODULE_DIR$/printers/vendor/symfony/cache" />
       <excludeFolder url="file://$MODULE_DIR$/printers/vendor/symfony/cache-contracts" />
@@ -88,6 +92,8 @@
       <excludeFolder url="file://$MODULE_DIR$/printers/vendor/symfony/serializer-pack" />
       <excludeFolder url="file://$MODULE_DIR$/printers/vendor/symfony/service-contracts" />
       <excludeFolder url="file://$MODULE_DIR$/printers/vendor/symfony/stopwatch" />
+      <excludeFolder url="file://$MODULE_DIR$/printers/vendor/symfony/swiftmailer-bundle" />
+      <excludeFolder url="file://$MODULE_DIR$/printers/vendor/symfony/templating" />
       <excludeFolder url="file://$MODULE_DIR$/printers/vendor/symfony/translation" />
       <excludeFolder url="file://$MODULE_DIR$/printers/vendor/symfony/translation-contracts" />
       <excludeFolder url="file://$MODULE_DIR$/printers/vendor/symfony/twig-bridge" />
@@ -98,6 +104,7 @@
       <excludeFolder url="file://$MODULE_DIR$/printers/vendor/symfony/web-link" />
       <excludeFolder url="file://$MODULE_DIR$/printers/vendor/symfony/yaml" />
       <excludeFolder url="file://$MODULE_DIR$/printers/vendor/twig/twig" />
+      <excludeFolder url="file://$MODULE_DIR$/printers/vendor/vich/uploader-bundle" />
       <excludeFolder url="file://$MODULE_DIR$/printers/vendor/webmozart/assert" />
       <excludeFolder url="file://$MODULE_DIR$/printers/vendor/willdurand/negotiation" />
       <excludeFolder url="file://$MODULE_DIR$/printers/vendor/zendframework/zend-code" />
