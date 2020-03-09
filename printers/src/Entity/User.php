@@ -13,9 +13,34 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ApiResource(
- * itemOperations={"get"={
- *      "access_control"="is_granted()"
- * }})
+ * itemOperations={
+ *     "get"={
+ *        "access_control"="is_granted('IS_AUTHENTICATED_FULLY')",
+ *        "normalization_context"={
+ *          "groups"={"get"}
+ *          }
+ *        },
+ *     "put"={
+ *         "access_control"="is_granted('IS_AUTHENTICATED_FULLY') and object == user",
+ *         "denormalization_context"={
+ *            "groups"={"put"}
+ *          },
+ *          "normalization_context"={
+ *            "groups"={"get"}
+ *          }
+ *       }
+ *     },
+ * collectionOperations={
+ *   "post"={
+ *      "denormalization_context"={
+ *          "groups"={"post"}
+ *       },
+ *     "normalization_context"={
+ *          "groups"={"get"}
+ *       },
+ *     }
+ *   }
+ * )
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  * @UniqueEntity(fields={"username"})
  * @UniqueEntity(fields={"email"})
@@ -39,7 +64,7 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"get-comment-with-author"})
+     * @Groups({"post","get-comment-with-author"})
      * @Assert\NotBlank()
      */
     private $username;
@@ -55,13 +80,13 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"read"})
+     * @Groups({"post", "read"})
      */
     private $name;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"read"})
+     * @Groups({"post", "read"})
      */
     private $email;
 
