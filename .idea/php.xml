@@ -86,7 +86,6 @@
       <path value="$PROJECT_DIR$/printers/vendor/symfony/dependency-injection" />
       <path value="$PROJECT_DIR$/printers/vendor/symfony/security-bundle" />
       <path value="$PROJECT_DIR$/printers/vendor/symfony/security-guard" />
-      <path value="$PROJECT_DIR$/printers/vendor/sensio/framework-extra-bundle" />
       <path value="$PROJECT_DIR$/printers/vendor/nelmio/cors-bundle" />
       <path value="$PROJECT_DIR$/printers/vendor/namshi/jose" />
       <path value="$PROJECT_DIR$/printers/vendor/nikic/php-parser" />
@@ -108,5 +107,5 @@
       <path value="$PROJECT_DIR$/printers/vendor/symfony/templating" />
     </include_path>
   </component>
-  <component name="PhpProjectSharedConfiguration" php_language_level="7.1" />
+  <component name="PhpProjectSharedConfiguration" php_language_level="7" />
 </project>
