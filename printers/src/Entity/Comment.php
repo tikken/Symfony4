@@ -11,6 +11,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ApiResource(
+ *     attributes={"order"={"published": "DESC"}},
  *     itemOperations={"get", "post"},
  *     collectionOperations={
  *     "get",
