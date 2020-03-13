@@ -5,6 +5,7 @@ namespace App\Entity;
 use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Annotation\ApiSubresource;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\DateFilter;
 use App\EventSubscriber\AuthoredEntityInterface;
 use App\EventSubscriber\PublishedDateEntityInterface;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -14,8 +15,15 @@ use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
+
 /**
  * @ORM\Entity(repositoryClass="App\Repository\BlogPostRepository")
+ * @ApiFilter(
+ *   DateFilter::class,
+ *   properties={
+ *      "published"
+ *   }
+ * )
  * @ApiFilter(
  *  SearchFilter::class,
  *  properties={
