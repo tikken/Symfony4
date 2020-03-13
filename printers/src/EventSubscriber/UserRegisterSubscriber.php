@@ -47,11 +47,11 @@ class UserRegisterSubscriber implements EventSubscriberInterface
             $user->setPassword(
                 $this->passwordEncoder->encodePassword($user, $user->getPassword())
             );
-        }
 
-        $user->setConfirmationToken(
-            $this->tokenGenerator->getRandomSecureToken()
-        );
+            $user->setConfirmationToken(
+                $this->tokenGenerator->getRandomSecureToken()
+            );
+        }
 
 
         $message = (new Swift_Message('Hello from api platform'))
