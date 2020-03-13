@@ -5,3 +5,10 @@ api_platform:
         json: ['application/merge-patch+json']
     swagger:
         versions: [3]
+    collection:
+        pagination:
+            #enabled: false
+            page_parameter_name: _page
+            client_enabled: true
+            enabled_parameter_name: pages
+            items_per_page: 3
