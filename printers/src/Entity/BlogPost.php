@@ -34,6 +34,13 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
  *    }
  * )
  * @ApiResource(
+ *     attributes={
+ *      "order"={"published": "DESC"},
+ *      "pagination_enabled"=true,
+ *      "pagination_client_enabled"=true,
+ *      "maximum_items_per_page"=30,
+ *      "pagination_partial"=true
+ *     },
  *    itemOperations={
  *     "get"={
  *          "normalization_context"={

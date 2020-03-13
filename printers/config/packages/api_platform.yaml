@@ -12,3 +12,6 @@ api_platform:
             client_enabled: true
             enabled_parameter_name: pages
             items_per_page: 5
+            partial: false
+            client_partial: true
+            partial_parameter_name: 'partial'
