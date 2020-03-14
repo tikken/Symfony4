@@ -180,7 +180,6 @@ class BlogPost implements AuthoredEntityInterface, PublishedDateEntityInterface
 
         return $this;
     }
-
     /**
      * @return User
      */
@@ -188,7 +187,6 @@ class BlogPost implements AuthoredEntityInterface, PublishedDateEntityInterface
     {
         return $this->author;
     }
-
     /**
      * @param UserInterface $author
      */
