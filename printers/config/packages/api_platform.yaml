@@ -3,8 +3,8 @@ api_platform:
         paths: ['%kernel.project_dir%/src/Entity']
     patch_formats:
         json: ['application/merge-patch+json']
-    swagger:
-        versions: [3]
+    eager_loading:
+        enabled: true
     collection:
         pagination:
             enabled: true
@@ -15,3 +15,5 @@ api_platform:
             partial: false
             client_partial: true
             partial_parameter_name: 'partial'
+    exception_to_status:
+        App\Exception\EmptyBodyException: 400

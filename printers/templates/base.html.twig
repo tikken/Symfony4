@@ -2,11 +2,20 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <title>{% block title %}Base twig{% endblock %}</title>
     {% block stylesheets %}{% endblock %}
 </head>
 <body>
+<style>
+    h1,p {
+        font-family: "Roboto";
+    }
+</style>
     {% block body %}{% endblock %}
     {% block javascripts %}{% endblock %}
+
+    <h1>Hi there is a technical page, reach Tikken for explanation.</h1>
+    <p>Email: tikken23@gmail.com</p>
 </body>
 </html>
