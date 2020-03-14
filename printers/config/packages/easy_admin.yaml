@@ -1,4 +1,6 @@
 easy_admin:
+    formats:
+        datetime: 'd/m/Y h:i A e'
     entities:
 #        # List the entity class name you want to manage
         - App\Entity\BlogPost

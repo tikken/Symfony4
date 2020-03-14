@@ -180,6 +180,7 @@ class BlogPost implements AuthoredEntityInterface, PublishedDateEntityInterface
 
         return $this;
     }
+
     /**
      * @return User
      */
@@ -187,6 +188,7 @@ class BlogPost implements AuthoredEntityInterface, PublishedDateEntityInterface
     {
         return $this->author;
     }
+
     /**
      * @param UserInterface $author
      */
@@ -210,5 +212,10 @@ class BlogPost implements AuthoredEntityInterface, PublishedDateEntityInterface
     public function removeImage(Image $image)
     {
         $this->images->removeElement($image);
+    }
+
+    public function __toString(): string
+    {
+        return $this->title;
     }
 }
