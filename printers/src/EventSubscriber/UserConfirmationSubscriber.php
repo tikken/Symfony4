@@ -10,12 +10,12 @@ namespace App\EventSubscriber;
 
 
 use ApiPlatform\Core\EventListener\EventPriorities;
+use App\Exception\InvalidConfirmationTokenException;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpKernel\Event\ViewEvent;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\HttpKernel\KernelEvents;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -53,7 +53,7 @@ class UserConfirmationSubscriber implements EventSubscriberInterface
         );
 
         if(!$user) {
-            throw new NotFoundHttpException();
+            throw new InvalidConfirmationTokenException();
         }
 
         $user->setEnabled(true);
