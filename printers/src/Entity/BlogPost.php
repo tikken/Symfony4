@@ -214,7 +214,7 @@ class BlogPost implements AuthoredEntityInterface, PublishedDateEntityInterface
         $this->images->removeElement($image);
     }
 
-    public function __toString(): string
+    public function __toString()
     {
         return $this->title;
     }

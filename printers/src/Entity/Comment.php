@@ -62,7 +62,7 @@ class Comment implements AuthoredEntityInterface, PublishedDateEntityInterface
     private $author;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\BlogPost", inversedBy="comments", cascade={"persist", "remove"})
+     * @ORM\ManyToOne(targetEntity="App\Entity\BlogPost", inversedBy="comments")
      * @ORM\JoinColumn(nullable=false)
      * @Groups({"post"})
      */
@@ -145,8 +145,8 @@ class Comment implements AuthoredEntityInterface, PublishedDateEntityInterface
         return $this;
     }
 
-    public function __toString(): string
+    public function __toString()
     {
-        return substr($this->content, 0, 20) . '...';
+        return substr($this->content, 0, 20) . "...";
     }
 }

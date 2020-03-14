@@ -1,8 +1,8 @@
 easy_admin:
     formats:
-        datetime: 'd/m/Y h:i A e'
+        datetime: 'd/m/Y'
     entities:
 #        # List the entity class name you want to manage
-        - App\Entity\BlogPost
-#        - App\Entity\Category
-        - App\Entity\User
+      - App\Entity\BlogPost
+      - App\Entity\User
+      - App\Entity\Comment
