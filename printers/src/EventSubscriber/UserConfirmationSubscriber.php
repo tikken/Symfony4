@@ -13,6 +13,7 @@ use ApiPlatform\Core\EventListener\EventPriorities;
 use App\Exception\InvalidConfirmationTokenException;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Psr\Log\LoggerInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpKernel\Event\ViewEvent;
@@ -24,11 +25,13 @@ class UserConfirmationSubscriber implements EventSubscriberInterface
 
     public function __construct(
         UserRepository $userRepository,
-        EntityManagerInterface $entityManager
+        EntityManagerInterface $entityManager,
+        LoggerInterface $logger
     )
     {
         $this->userRepository = $userRepository;
         $this->entityManager = $entityManager;
+        $this->logger = $logger;
     }
 
     public static function getSubscribedEvents()
@@ -40,6 +43,8 @@ class UserConfirmationSubscriber implements EventSubscriberInterface
 
     public function confirmUser(ViewEvent $event)
     {
+        $this->logger->debug('Fetching user by confirmation token');
+
         $request = $event->getRequest();
 
         if('api_user_confirmations_post_collection' !== $request->get('_route')) {
@@ -53,6 +58,7 @@ class UserConfirmationSubscriber implements EventSubscriberInterface
         );
 
         if(!$user) {
+            $this->logger->debug('User by confirmation token not found');
             throw new InvalidConfirmationTokenException();
         }
 
@@ -61,5 +67,7 @@ class UserConfirmationSubscriber implements EventSubscriberInterface
         $this->entityManager->flush();
 
         $event->setResponse(new JsonResponse(null, Response::HTTP_OK));
+
+        $this->logger->debug('User confirmed by confirmation token');
     }
 }
